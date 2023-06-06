@@ -1,0 +1,17 @@
+body {
+    background-color:#EEEEEE;
+    color: $primary;
+    transition: background-color 0.7s;
+    .header-class,.text-dynamic-color{
+      color: $primary;
+    }
+}
+
+body.body--dark{
+  background-color:#181818;
+  transition: background-color 0.7s;
+  .header-class,.text-dynamic-color{
+    box-shadow: unset;
+    color: white;
+  }
+}
