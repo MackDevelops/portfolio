@@ -21,7 +21,7 @@ deploy_production:
   script:
     - npm install
     - quasar build
-    - mv dist/spa/* public/
+    - mv -f dist/spa/* public/
   artifacts:
     paths:
       - public
