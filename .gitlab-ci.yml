@@ -21,6 +21,8 @@ build:
 deploy_production:
   stage: deploy
   script:
+    - npm install
+    - quasar build
     - mkdir .public
     - cp -r dist/spa/* .public
     - cp .htaccess .public
