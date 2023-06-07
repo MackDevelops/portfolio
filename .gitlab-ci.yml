@@ -21,7 +21,8 @@ deploy_production:
   script:
     - npm install
     - quasar build
-    - mv -f dist/spa/* public/
+    - mkdir -p public
+    - rsync -av --delete dist/spa/ public/
   artifacts:
     paths:
       - public
