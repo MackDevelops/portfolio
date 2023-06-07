@@ -1,0 +1,41 @@
+# The Docker image that will be used to build your app
+image: node:latest
+
+cache:
+  paths:
+    - node_modules/
+
+stages:
+  - build
+  - test
+  - deploy
+
+before_script:
+  - npm install -g @quasar/cli
+
+build:
+  stage: build
+  script:
+    - npm install
+    - quasar build
+
+test:
+  stage: test
+  script:
+    - npm run test
+
+deploy_staging:
+  stage: deploy
+  script:
+    - npm install --production
+    - quasar build
+    - mv dist public
+    # Add deployment commands for staging environment
+
+deploy_production:
+  stage: deploy
+  script:
+    - npm install --production
+    - quasar build
+    - mv dist public
+    # Add deployment commands for production environment
