@@ -23,7 +23,6 @@ deploy_production:
     - quasar build
     - mkdir -p public
     - cp -r --remove-destination dist/spa/. public/
-/bin/bash: line 138: rsync: command not found
   artifacts:
     paths:
       - public
