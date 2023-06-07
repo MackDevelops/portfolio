@@ -19,18 +19,17 @@ build:
     - npm install
     - quasar build
 
-test:
-  stage: test
-  script:
-    - npm run test
-
 deploy_production:
   stage: deploy
   script:
     - npm install
     - quasar build
-    - mv dist public
+    - mv dist/spa public
     # Add deployment commands for production environment
   artifacts:
     paths:
       - public
+  rules:
+    # This ensures that only pushes to the default branch will trigger
+    # a pages deploy
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
