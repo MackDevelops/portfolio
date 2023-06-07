@@ -15,6 +15,11 @@ build:
   script:
     - npm install
     - quasar build
+    - mkdir -p public
+    - cp -r --remove-destination dist/spa/. public/
+  artifacts:
+    paths:
+      - public
 
 deploy_production:
   stage: deploy
