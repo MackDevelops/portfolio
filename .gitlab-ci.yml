@@ -23,6 +23,5 @@ deploy_production:
   artifacts:
     paths:
       - public
-    gzip: true
   rules:
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
