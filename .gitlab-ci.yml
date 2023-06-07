@@ -27,7 +27,7 @@ test:
 deploy_staging:
   stage: deploy
   script:
-    - npm install --production
+    - npm install
     - quasar build
     - mv dist public
     # Add deployment commands for staging environment
@@ -35,7 +35,7 @@ deploy_staging:
 deploy_production:
   stage: deploy
   script:
-    - npm install --production
+    - npm install
     - quasar build
     - mv dist public
     # Add deployment commands for production environment
