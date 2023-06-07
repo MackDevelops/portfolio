@@ -24,14 +24,6 @@ test:
   script:
     - npm run test
 
-deploy_staging:
-  stage: deploy
-  script:
-    - npm install
-    - quasar build
-    - mv dist public
-    # Add deployment commands for staging environment
-
 deploy_production:
   stage: deploy
   script:
@@ -39,3 +31,6 @@ deploy_production:
     - quasar build
     - mv dist public
     # Add deployment commands for production environment
+  artifacts:
+    paths:
+      - public
