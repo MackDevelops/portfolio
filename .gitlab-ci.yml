@@ -1,6 +1,4 @@
-# The Docker image that will be used to build your app
-image: node:latest
-
+image: node:16.13.0
 cache:
   paths:
     - node_modules/
@@ -21,19 +19,10 @@ build:
 deploy_production:
   stage: deploy
   script:
-    - npm install
-    - quasar build
-    - mkdir .public
-    - cp -r dist/spa/* .public
-    # - cp .htaccess .public
-    - cp dist/spa/index.html .public/404.html
-    - mv .public public
-    - find public -type f -regex '.*\.\(htm\|html\|txt\|text\|js\|css\)$' -exec gzip -f -k {} \;
-    # Add deployment commands for production environment
+    - cp -r dist/spa/* public
   artifacts:
     paths:
       - public
+    gzip: true
   rules:
-    # This ensures that only pushes to the default branch will trigger
-    # a pages deploy
     - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
