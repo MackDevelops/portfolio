@@ -22,7 +22,8 @@ deploy_production:
     - npm install
     - quasar build
     - mkdir -p public
-    - rsync -av --delete dist/spa/ public/
+    - cp -r --remove-destination dist/spa/. public/
+/bin/bash: line 138: rsync: command not found
   artifacts:
     paths:
       - public
